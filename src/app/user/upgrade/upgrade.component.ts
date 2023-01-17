@@ -3,6 +3,7 @@ import { FirebaseApp } from '@angular/fire/app';
 import { Auth, getAuth } from '@angular/fire/auth';
 import { where, getDocs, addDoc, onSnapshot, collection, doc, Firestore, orderBy, query } from '@angular/fire/firestore';
 import { getFunctions, httpsCallable } from '@angular/fire/functions';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-upgrade',
@@ -69,8 +70,7 @@ export class UpgradeComponent {
   // ✅ CHECKOUT
   async checkout(price: string) {
     this.isloading = true // Spinner
-    const auth = getAuth();
-    const user = auth.currentUser;
+    const user = this.auth.currentUser;
     
     const selectedPrice = [{
       price,
@@ -117,8 +117,7 @@ export class UpgradeComponent {
     
   // ✅ GET USER PRODUCTS
   private checkUserProduct() {
-    const auth = getAuth();
-    const user = auth.currentUser;
+    const user = this.auth.currentUser;
     const items: any = [];
     if (user) {
       const uid = user.uid;        
@@ -147,11 +146,12 @@ export class UpgradeComponent {
     }
   }
 
-  // ✅ CUSTOMER PORTAL  
+  // ✅ CUSTOMER PORTAL
+  // ℹ️ https://firebase.google.com/docs/functions/callable#web-version-9_2
   async accessCustomerPortal() {
     this.isloading = true // Spinner
-    const region = getFunctions(this.app, 'europe-west2');
-    const functionRef = await httpsCallable(region, 'ext-firestore-stripe-subscriptions-createPortalLink'); // TODO: change 'subscriptions' to 'payments'
+    const region = getFunctions(this.app, environment.firebase.locationId);
+    const functionRef = await httpsCallable(region, 'ext-firestore-stripe-subscriptions-createPortalLink'); // 🔥 Change 'subscriptions' to 'payments'
     await functionRef({ returnUrl: window.location.origin }) // 'window.location.href' to return to same page, or: `${window.location.origin}/account`})
       .then(({ data }: any) => window.location.assign(data.url))
       .catch((error) => console.trace(error.message));  
@@ -160,9 +160,8 @@ export class UpgradeComponent {
   // ✅ STRIPE ROLES
   // IMPORTANT: at Stripe dashboard/product add metadata field: 'firebaseRole' and example value: 'premium'
   async getCustomClaimRole() {
-    const auth = getAuth();
-    await auth.currentUser?.getIdToken(true);
-    const decodedToken = await auth.currentUser?.getIdTokenResult();
+    await this.auth.currentUser?.getIdToken(true);
+    const decodedToken = await this.auth.currentUser?.getIdTokenResult();
     console.log('👤 USER ROLE:', decodedToken?.claims['stripeRole']);
     this.stripeRole = decodedToken?.claims['stripeRole'];
     return decodedToken?.claims['stripeRole'] || 'free';
