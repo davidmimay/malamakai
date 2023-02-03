@@ -1,12 +1,13 @@
 export const environment = {
   firebase: {
-    apiKey: 'AIzaSyDpcqDZQXZD_K3titfTXGHCcJssHUNnE_0',
-    authDomain: 'malamakai.firebaseapp.com',
-    projectId: 'malamakai',
-    storageBucket: 'malamakai.appspot.com',
-    messagingSenderId: '198661698484',
-    appId: '1:198661698484:web:e268c4a7fce89f689f78e1',
-    measurementId: 'G-GGSMH1XYJY',
+    projectId: 'mimay1',
+    appId: '1:528823231751:web:5e12e4f488304894f8d1a2',
+    databaseURL: 'https://mimay1.firebaseio.com',
+    storageBucket: 'mimay1.appspot.com',
+    apiKey: 'AIzaSyDherIKIIiOpM5MkIF_T_EQBWFy9BHhbS4',
+    authDomain: 'mimay1.firebaseapp.com',
+    messagingSenderId: '528823231751',
+    measurementId: 'G-2CVBNV4BDL',
     locationId: 'europe-west2',
   },
   google: {
