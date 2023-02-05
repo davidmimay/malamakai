@@ -52,27 +52,29 @@ export class BioComponent implements OnInit {
     if (user) {
       const uid = user.uid;
       const docRef = doc(this.firestore, 'customers', uid);
-      updateDoc(docRef, {        
-        hobbies: this.user.tags,
-        link: this.user.link,
+      updateDoc(docRef, {
         bio: this.user.bio,
-      }).then(() => {
-        this.message = "Updated";
-      }).catch((error) => {
-        console.log(error)
-      })
-
-      /*
-      // Update Profile data from Google on Firebase only
-      updateProfile(auth.currentUser, {
+        link: this.user.link,
+        tags: this.user.tags,
+        // Set Google user data on firestore
         displayName: user.displayName,
         photoURL: user.photoURL,
       }).then(() => {
         this.message = "Updated";
       }).catch((error) => {
         console.log(error)
-      });
-      */
+      })
+
+      // Update Profile data retrieved from Google on my Firebase (not firestore)
+      // const auth = getAuth();
+      // updateProfile(auth.currentUser!, {
+      //   displayName: user.displayName,
+      //   photoURL: user.photoURL,
+      // }).then(() => {
+      //   this.message = "Updated";
+      // }).catch((error) => {
+      //   console.log(error)
+      // });
 
     } else {
       console.log("update() | No user");

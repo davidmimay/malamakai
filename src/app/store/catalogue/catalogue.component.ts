@@ -5,6 +5,9 @@ import { where, getDocs, addDoc, onSnapshot, collection, doc, Firestore, orderBy
 import { getFunctions, httpsCallable } from '@angular/fire/functions';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-catalogue',
@@ -21,14 +24,33 @@ export class CatalogueComponent {
   invoices: any = [];
   subscriptions: any = [];
   youtubeItems: any;
-  
+
   constructor(
     @Optional() public auth: Auth,
     private readonly firestore: Firestore,
+    public dialog: MatDialog
   ) {
     this.displayProducts();
   }
-  
+
+  // PRODUCT DIALOG
+  openDialog() {
+    const dialogRef = this.dialog.open(ProductComponent, {
+      data: { name: this.products.name }
+    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
+  }
+
+  // ✅ PAGINATOR
+  pageIndex = 0;
+  pageEvent!: PageEvent;
+  public handlePageEvent(e: PageEvent) {
+    this.pageEvent = e;
+    this.pageIndex = e.pageIndex;
+  }
+
   // ✅ DISPLAY PRODUCTS & PRICES
   async displayProducts() {
     const productRef = query(collection(this.firestore, 'products'), where('active', '==', true));
@@ -51,15 +73,16 @@ export class CatalogueComponent {
         if (price['active'] === true) {
           items.push({
             name: product.name,
-            image: product.images[0],
             description: product.description, 
-            // metadata: product.metadata,
             billing_scheme: price['billing_scheme'],
             currency: price['currency'],
             type: price['type'],
             interval: price['interval'],
             price: ((price['unit_amount'] / 100).toFixed(0)),
             priceId,
+            metadata: product['metadata'],
+            // image: product['images'],
+            image: product.images,
           });
         }
       });
@@ -87,7 +110,8 @@ export class CatalogueComponent {
         // tax_rates: [],
         // allow_promotion_codes: true,
         payment_method_types: ['card'],
-        collect_shipping_address: true,
+        collect_shipping_address: true, // 🔥 Create shipping_countries doc at products collection, with arrray: allowed_countries, and add country codes to ship.
+
         // shipping_address_collection: {allowed_countries: ['US']},
         billing_address_collection: 'auto',
         line_items: [{
@@ -96,8 +120,8 @@ export class CatalogueComponent {
         }],
         phone_number_collection: { enabled: true },
         mode: 'payment',
-        success_url: `${window.location.origin}/success`,// window.location.href,
-        cancel_url: `${window.location.origin}/cancel`,
+        success_url: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,// window.location.href,
+        cancel_url: `${window.location.origin}/cancel?session_id={CHECKOUT_SESSION_ID}`,
         metadata: { key: 'value'},
         locale: 'en',
       });
