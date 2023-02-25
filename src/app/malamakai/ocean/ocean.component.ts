@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { AngularFireAuth } from '@angular/fire/auth';
-import { addDoc, collection, collectionData, doc, docData, getDoc, Firestore, increment, orderBy, query, serverTimestamp, updateDoc } from '@angular/fire/firestore';
+import { getDocs, where, addDoc, collection, collectionData, doc, docData, getDoc, Firestore, increment, orderBy, query, serverTimestamp, updateDoc } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class OceanComponent implements OnInit {
 
-  invoices = []
+  invoices = [];
+  item: any = [];
   public customerId:any = this.route.snapshot.paramMap.get('id'); // public customerId:any = this.afAuth.auth.currentUser.uid;
 
   constructor(
@@ -26,8 +27,8 @@ export class OceanComponent implements OnInit {
 
   // ✅ DISPLAY INVOICES
   // refactor this, new version 9.
-  getUserInvoices() {
-    /*
+
+  /*
     const customerId = this.route.snapshot.paramMap.get('id'); // const customerId = this.afAuth.auth.currentUser.uid;
     // const docRef = doc(this.firestore, 'customers', uid);
     const ref = this.afStore.collection('customers').ref;
@@ -65,6 +66,40 @@ export class OceanComponent implements OnInit {
         this.invoices = items;  
       });
       */
+
+  // ✅ DISPLAY INVOICES
+  async getUserInvoices() {
+    const subscriptionRef = query(collection(this.firestore, 'customers', this.customerId, 'subscriptions'));
+    const subscriptionSnap = await getDocs(subscriptionRef);
+    const items: any = [];
+
+    subscriptionSnap.forEach(async (doc) => {
+      const subscriptionId = doc.id;
+      const subscription: any = await doc.data();
+      // console.log('🛒 SUBSCRIPTION:', subscription);
+
+      const invoiceRef = query(collection(this.firestore, 'invoices'), where('status', '==', 'paid'), /* orderBy('unit_amount')*/);
+      const invoiceSnap = await getDocs(invoiceRef);
+
+      invoiceSnap.forEach(async (doc) => {
+        const invoiceId = doc.id;
+        const invoice: any = await doc.data();
+        console.log('🛒 INVOICE:', invoice);
+
+        if (invoice.status === 'paid') {
+          items.push({
+            number: invoice['number'],
+            url: invoice['hosted_invoice_url'],
+            created: invoice['created'] * 1000,
+            label: invoice.lines.data[0].price.nickname, // price name inside product at Stripe dashboard
+            help: invoice['metadata'].help,
+            // clean: (invoiceData.amount_paid / 100 ) * (6), // x6 litres every 1$ spend.
+            invoiceId,
+          });
+        }
+      });
+      this.invoices = items;  
+    });
   }
 
 }
