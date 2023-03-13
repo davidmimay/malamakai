@@ -1,8 +1,8 @@
 {
   "targets": {
-    "mimay1": {
+    "nooglerway": {
       "hosting": {
-        "angulartemplate": [
+        "nooglerway": [
           "nooglerway"
         ]
       }
