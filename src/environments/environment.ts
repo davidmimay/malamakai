@@ -1,13 +1,13 @@
 export const environment = {
   firebase: {
-    apiKey: "AIzaSyDpcqDZQXZD_K3titfTXGHCcJssHUNnE_0",
-    authDomain: "malamakai.firebaseapp.com",
-    projectId: "malamakai",
-    storageBucket: "malamakai.appspot.com",
-    messagingSenderId: "198661698484",
-    appId: "1:198661698484:web:e268c4a7fce89f689f78e1",
-    measurementId: "G-GGSMH1XYJY",
-    locationId: 'us-central1',
+    apiKey: 'AIzaSyAjyWmiqzS95rUDhR9ZaaFN5BSAZGIWgWU',
+    authDomain: 'nooglerway.firebaseapp.com',
+    projectId: 'nooglerway',
+    storageBucket: 'nooglerway.appspot.com',
+    messagingSenderId: '831764107569',
+    appId: '1:831764107569:web:b073afc5c247840e932010',
+    measurementId: 'G-EFK65VXPGW',
+    locationId: 'us-west2',
   },
   google: {
     bloggerId: '6664790489593253867',
