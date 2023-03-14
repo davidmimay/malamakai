@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'store', loadChildren: () => import('./store/store.module').then(m => m.StoreModule) },
   { path: 'youtube', loadChildren: () => import('./youtube/youtube.module').then(m => m.YoutubeModule) },
   // Projects
-  { path: 'ethtomars', loadChildren: () => import('./ethtomars/ethtomars.module').then(m => m.EthtomarsModule) },
+  { path: 'malamakai', loadChildren: () => import('./malamakai/malamakai.module').then(m => m.MalamakaiModule) },
   // Stripe
   { path: 'support', component: PaymentComponent },
   { path: 'privacy', component: PaymentComponent },
