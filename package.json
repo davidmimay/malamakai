@@ -1,5 +1,5 @@
 {
-  "name": "angulartemplate",
+  "name": "webapp",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,10 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:ssr": "ng run angulartemplate:serve-ssr",
-    "serve:ssr": "node dist/angulartemplate/server/main.js",
-    "build:ssr": "ng build && ng run angulartemplate:server",
-    "prerender": "ng run angulartemplate:prerender"
+    "dev:ssr": "ng run webapp:serve-ssr",
+    "serve:ssr": "node dist/webapp/server/main.js",
+    "build:ssr": "ng build && ng run webapp:server",
+    "prerender": "ng run webapp:prerender"
   },
   "private": true,
   "dependencies": {

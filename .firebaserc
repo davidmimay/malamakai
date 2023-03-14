@@ -1,14 +1,14 @@
 {
   "targets": {
-    "mimay1": {
+    "malamakai": {
       "hosting": {
-        "angulartemplate": [
-          "nooglerway"
+        "malamakai": [
+          "malamakai"
         ]
       }
     }
   },
   "projects": {
-    "default": "nooglerway"
+    "default": "malamakai"
   }
 }
