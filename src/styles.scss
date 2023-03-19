@@ -1,49 +1,32 @@
 @use '@angular/material' as mat;
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
+// Compute font config
+@include mat.core();
+// Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48I2QyYjQ4YyIsIj9lcjwjZjJlOWRkIiwiO2VyPCNjMTljNmZ$LCIlPmBePCM0NjgyYjQiLCI~ZXI8I2M4ZGFlOSIsIjtlcjwjMmY2NTljfiwid2Fybj5gXjwjZmY3ZjUwIiwiP2VyPCNmZmQ5Y2IiLCI7ZXI8I2ZmNjIzN34sIj9UZXh0PCMzMzMzMzMiLCI~PTwjZWVlZWVlIiwiO1RleHQ8I2VlZWVlZSIsIjs9PCMzMzMzMzN$LCJmb250cz5bYEA8KC00IiwiZmFtaWx5PEFyY2hpdm8gQmxhY2t$LGBAPCgtMyIsImZhbWlseTxBcmNoaXZvIEJsYWNrfixgQDwoLTIiLCJmYW1pbHk8QXJjaGl2byBCbGFja34sYEA8KC0xIiwiZmFtaWx5PEFyY2hpdm8gQmxhY2t$LGBAPGhlYWRsaW5lfixgQDx0aXRsZX4sYEA8c3ViKS0yfixgQDxzdWIpLTF$LGBAPGJvZHktMn4sYEA8Ym9keS0xfixgQDxidXR0b25$LGBAPGNhcHRpb25$LGBAPGlucHV0Iiwic2l6ZT5udWxsfV0sImljb25zPE91dGxpbmVkIiwiP25lc3M$dHJ1ZSwidmVyc2lvbj4xM30=
 
 // Fonts
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
-     
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
 
 $fonts: mat.define-typography-config(
-  $headline-1: mat.define-typography-level(112px, 112px, 300, $font-family: "Playfair Display"),
-  $headline-2: mat.define-typography-level(56px, 56px, 400, $font-family: "Playfair Display"),
-  $headline-3: mat.define-typography-level(45px, 48px, 400, $font-family: "Playfair Display"),
-  $headline-4: mat.define-typography-level(34px, 40px, 400, $font-family: "Playfair Display"),
-  $headline-5: mat.define-typography-level(24px, 32px, 400, $font-family: "Playfair Display"),
-  $headline-6: mat.define-typography-level(20px, 32px, 500, $font-family: "Playfair Display"),
-  $subtitle-1: mat.define-typography-level(16px, 28px, 400, $font-family: "Playfair Display"),
-  $subtitle-2: mat.define-typography-level(15px, 24px, 500, $font-family: "Playfair Display"),
-  $body-1: mat.define-typography-level(14px, 24px, 500, $font-family: "Playfair Display"),
-  $body-2: mat.define-typography-level(14px, 20px, 400, $font-family: "Playfair Display"),
-  $caption: mat.define-typography-level(12px, 20px, 400, $font-family: "Playfair Display"),
-  $button: mat.define-typography-level(inherit, 1.125, 400, $font-family: "Playfair Display"),
+  $headline-1: mat.define-typography-level(112px, 112px, 300, $font-family: 'Playfair Display'),
+  $headline-2: mat.define-typography-level(56px, 56px, 400, $font-family: 'Playfair Display'),
+  $headline-3: mat.define-typography-level(45px, 48px, 400, $font-family: 'Playfair Display'),
+  $headline-4: mat.define-typography-level(34px, 40px, 400, $font-family: 'Playfair Display'),
+  $headline-5: mat.define-typography-level(24px, 32px, 400, $font-family: 'Playfair Display'),
+  $headline-6: mat.define-typography-level(20px, 32px, 500, $font-family: 'Playfair Display'),
+  $subtitle-1: mat.define-typography-level(16px, 28px, 400, $font-family: 'DM Sans'),
+  $subtitle-2: mat.define-typography-level(15px, 24px, 500, $font-family: 'DM Sans'),
+  $body-1: mat.define-typography-level(14px, 24px, 500, $font-family: 'DM Sans'),
+  $body-2: mat.define-typography-level(14px, 20px, 400, $font-family: 'DM Sans'),
+  $caption: mat.define-typography-level(12px, 20px, 400, $font-family: 'DM Sans'),
+  $button: mat.define-typography-level(inherit, 1.125, 400, $font-family: 'DM Sans'),
 );
-
-// $fontConfig: (
-//   display-4: mat.define-typography-level(112px, 112px, 300, 'Playfair Display', -0.0134em),
-//   display-3: mat.define-typography-level(56px, 56px, 400, 'Roboto', -0.0089em),
-//   display-2: mat.define-typography-level(45px, 48px, 400, 'Roboto', 0.0000em),
-//   display-1: mat.define-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
-//   headline: mat.define-typography-level(24px, 32px, 400, 'Roboto', 0.0000em),
-//   title: mat.define-typography-level(20px, 32px, 500, 'Roboto', 0.0075em),
-//   subheading-2: mat.define-typography-level(16px, 28px, 400, 'Roboto', 0.0094em),
-//   subheading-1: mat.define-typography-level(15px, 24px, 500, 'Roboto', 0.0067em),
-//   body-2: mat.define-typography-level(14px, 24px, 500, 'Roboto', 0.0179em),
-//   body-1: mat.define-typography-level(14px, 20px, 400, 'Roboto', 0.0179em),
-//   button: mat.define-typography-level(14px, 14px, 500, 'Roboto', 0.0893em),
-//   caption: mat.define-typography-level(12px, 20px, 400, 'Roboto', 0.0333em),
-//   input: mat.define-typography-level(inherit, 1.125, 400, 'Roboto', 1.5px)
-// );
 
 // Foreground Elements
 
 // Light Theme Text
-$dark-text: #2c2c2c;
+$dark-text: #333333;
 $dark-primary-text: rgba($dark-text, 0.87);
 $dark-accent-text: rgba($dark-primary-text, 0.54);
 $dark-disabled-text: rgba($dark-primary-text, 0.38);
@@ -70,7 +53,7 @@ $mat-light-theme-foreground: (
 );
 
 // Dark Theme text
-$light-text: #fafafa;
+$light-text: #eeeeee;
 $light-primary-text: $light-text;
 $light-accent-text: rgba($light-primary-text, 0.7);
 $light-disabled-text: rgba($light-primary-text, 0.5);
@@ -98,15 +81,15 @@ $mat-dark-theme-foreground: (
 
 // Background config
 // Light bg
-$light-background:    #fafafa;
+$light-background:    #eeeeee;
 $light-bg-darker-5:   darken($light-background, 5%);
 $light-bg-darker-10:  darken($light-background, 10%);
 $light-bg-darker-20:  darken($light-background, 20%);
 $light-bg-darker-30:  darken($light-background, 30%);
 $light-bg-lighter-5:  lighten($light-background, 5%);
-$dark-bg-tooltip:     lighten(#2c2c2c, 20%);
-$dark-bg-alpha-4:     rgba(#2c2c2c, 0.04);
-$dark-bg-alpha-12:    rgba(#2c2c2c, 0.12);
+$dark-bg-tooltip:     lighten(#333333, 20%);
+$dark-bg-alpha-4:     rgba(#333333, 0.04);
+$dark-bg-alpha-12:    rgba(#333333, 0.12);
 
 $mat-light-theme-background: (
   background:               $light-background,
@@ -127,13 +110,13 @@ $mat-light-theme-background: (
 );
 
 // Dark bg
-$dark-background:     #2c2c2c;
+$dark-background:     #333333;
 $dark-bg-lighter-5:   lighten($dark-background, 5%);
 $dark-bg-lighter-10:  lighten($dark-background, 10%);
 $dark-bg-lighter-20:  lighten($dark-background, 20%);
 $dark-bg-lighter-30:  lighten($dark-background, 30%);
-$light-bg-alpha-4:    rgba(#fafafa, 0.04);
-$light-bg-alpha-12:   rgba(#fafafa, 0.12);
+$light-bg-alpha-4:    rgba(#eeeeee, 0.04);
+$light-bg-alpha-12:   rgba(#eeeeee, 0.12);
 
 // Background palette for dark themes.
 $mat-dark-theme-background: (
@@ -154,24 +137,21 @@ $mat-dark-theme-background: (
   disabled-list-option:     $dark-bg-lighter-10,
 );
 
-// Compute font config
-@include mat.core();
-
 // Theme Config
 
 body {
-  --primary-color: #f5a631;
-  --primary-lighter-color: #fce4c1;
-  --primary-darker-color: #f08b1f;
+  --primary-color: #d2b48c;
+  --primary-lighter-color: #f2e9dd;
+  --primary-darker-color: #c19c6f;
   --text-primary-color: #{$dark-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$dark-primary-text};
 }   
 $mat-primary: (
-  main: #f5a631,
-  lighter: #fce4c1,
-  darker: #f08b1f,
-  200: #f5a631, // For slide toggle,
+  main: #d2b48c,
+  lighter: #f2e9dd,
+  darker: #c19c6f,
+  200: #d2b48c, // For slide toggle,
   contrast : (
     main: $dark-primary-text,
     lighter: $dark-primary-text,
@@ -182,20 +162,20 @@ $theme-primary: mat.define-palette($mat-primary, main, lighter, darker);
 
 
 body {
-  --accent-color: #808080;
-  --accent-lighter-color: #d9d9d9;
-  --accent-darker-color: #636363;
-  --text-accent-color: #{$dark-primary-text};
+  --accent-color: #4682b4;
+  --accent-lighter-color: #c8dae9;
+  --accent-darker-color: #2f659c;
+  --text-accent-color: #{$light-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$light-primary-text};
 }   
 $mat-accent: (
-  main: #808080,
-  lighter: #d9d9d9,
-  darker: #636363,
-  200: #808080, // For slide toggle,
+  main: #4682b4,
+  lighter: #c8dae9,
+  darker: #2f659c,
+  200: #4682b4, // For slide toggle,
   contrast : (
-    main: $dark-primary-text,
+    main: $light-primary-text,
     lighter: $dark-primary-text,
     darker: $light-primary-text,
   )
@@ -204,28 +184,27 @@ $theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
 
 
 body {
-  --warn-color: #ff0000;
-  --warn-lighter-color: #ffb3b3;
-  --warn-darker-color: #ff0000;
-  --text-warn-color: #{$light-primary-text};
+  --warn-color: #ff7f50;
+  --warn-lighter-color: #ffd9cb;
+  --warn-darker-color: #ff6237;
+  --text-warn-color: #{$dark-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
-  --text-warn-darker-color: #{$light-primary-text};
+  --text-warn-darker-color: #{$dark-primary-text};
 }   
 $mat-warn: (
-  main: #ff0000,
-  lighter: #ffb3b3,
-  darker: #ff0000,
-  200: #ff0000, // For slide toggle,
+  main: #ff7f50,
+  lighter: #ffd9cb,
+  darker: #ff6237,
+  200: #ff7f50, // For slide toggle,
   contrast : (
-    main: $light-primary-text,
+    main: $dark-primary-text,
     lighter: $dark-primary-text,
-    darker: $light-primary-text,
+    darker: $dark-primary-text,
   )
 );
 $theme-warn: mat.define-palette($mat-warn, main, lighter, darker);
 
-
-// NEW ***********************************
+// ****** NEW
 $theme: mat.define-light-theme(
   (
     color: (
@@ -253,45 +232,32 @@ $altTheme: mat.define-dark-theme(
   @include mat.all-component-colors($altTheme);
 }
 
-// END ****************
+@include mat.typography-hierarchy($fonts);
 
-
-
-
-// Theme Init
-// @include mat.all-component-themes($theme);
-
-// .theme-alternate {
-//   @include mat.all-component-themes($altTheme);
-// }
+// ****** END
 
 // Specific component overrides, pieces that are not in line with the general theming
 
 // Handle buttons appropriately, with respect to line-height
-/*
-
-.mat-mdc-raised-button, .mat-mdc-outlined-button, .mat-mdc-flat-button {
+.mat-raised-button, .mat-stroked-button, .mat-flat-button {
   padding: 0 1.15em;
   margin: 0 .65em;
   min-width: 3em;
   line-height: 36.4px
 }
 
-.mat-mdc-standard-chip {
+.mat-standard-chip {
   padding: .5em .85em;
   min-height: 2.5em;
 }
 
 .material-icons {
   font-size: 24px;
-  font-family: 'Material Icons', 'Material Icons';  
+  font-family: 'Material Icons Outlined', 'Material Icons';  
   .mat-badge-content {
     font-family: 'Roboto';
   }
 }
-
-
-*/
 
 // GLOBAL
 
@@ -312,7 +278,7 @@ header {
   text-align: center;
 }
 section {
-  padding: 1em;
+  padding: 2em;
 }
 .center {
   margin: 0 auto !important;
@@ -323,6 +289,7 @@ section {
   border-radius: 40%;
   margin: 0 10px 5px;
 }
+
 // Automatic theme switcher
 // @media (prefers-color-scheme: dark) { :root { @include mat.all-component-colors($altTheme) }}
 
