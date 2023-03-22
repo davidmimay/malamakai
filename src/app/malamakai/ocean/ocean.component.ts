@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-// import { AngularFireAuth } from '@angular/fire/auth';
+import { Component } from '@angular/core';
 import { getDocs, where, addDoc, collection, collectionData, doc, docData, getDoc, Firestore, increment, orderBy, query, serverTimestamp, updateDoc } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,11 +7,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './ocean.component.html',
   styleUrls: ['./ocean.component.scss']
 })
-export class OceanComponent implements OnInit {
-
-  invoices = [];
+export class OceanComponent {
+  invoices: any = [];
   item: any = [];
-  public customerId:any = this.route.snapshot.paramMap.get('id'); // public customerId:any = this.afAuth.auth.currentUser.uid;
+  // public customerId:any = this.route.snapshot.paramMap.get('id'); // public customerId:any = this.afAuth.auth.currentUser.uid;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,7 +47,6 @@ export class OceanComponent implements OnInit {
             const invoiceId = doc.id;
             const invoiceData = doc.data();
             // console.log('📄 USER INVOICES:', invoiceData);
-
             if (invoiceData.status === 'paid') {
               items.push({
                 number: invoiceData.number,
@@ -69,18 +66,19 @@ export class OceanComponent implements OnInit {
 
   // ✅ DISPLAY INVOICES
   async getUserInvoices() {
-    const subscriptionRef = query(collection(this.firestore, 'customers', this.customerId, 'subscriptions'));
+    const customerId: any = this.route.snapshot.paramMap.get('id');
+    const subscriptionRef = query(collection(this.firestore, 'customers', customerId, 'subscriptions'), where('status', 'in', ['trialing', 'active']));
     const subscriptionSnap = await getDocs(subscriptionRef);
     const items: any = [];
 
     subscriptionSnap.forEach(async (doc) => {
       const subscriptionId = doc.id;
       const subscription: any = await doc.data();
-      // console.log('🛒 SUBSCRIPTION:', subscription);
+      console.log('🛒 SUBSCRIPTION:', subscription);
 
-      const invoiceRef = query(collection(this.firestore, 'invoices'), where('status', '==', 'paid'), /* orderBy('unit_amount')*/);
+      const invoiceRef = query(collection(this.firestore, 'customers', customerId, 'subscriptions', subscriptionId, 'invoices'), where('status', '==', 'paid')/* orderBy('unit_amount')*/);
       const invoiceSnap = await getDocs(invoiceRef);
-
+      
       invoiceSnap.forEach(async (doc) => {
         const invoiceId = doc.id;
         const invoice: any = await doc.data();
@@ -91,15 +89,15 @@ export class OceanComponent implements OnInit {
             number: invoice['number'],
             url: invoice['hosted_invoice_url'],
             created: invoice['created'] * 1000,
-            label: invoice.lines.data[0].price.nickname, // price name inside product at Stripe dashboard
-            help: invoice['metadata'].help,
+            // label: invoice.lines.data[0].price.nickname, // price name inside product at Stripe dashboard
+            // help: invoice['metadata'].help,
             // clean: (invoiceData.amount_paid / 100 ) * (6), // x6 litres every 1$ spend.
             invoiceId,
+            description: 'hello',
           });
         }
       });
       this.invoices = items;  
     });
   }
-
 }

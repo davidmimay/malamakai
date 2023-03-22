@@ -5,20 +5,20 @@ import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { PageComponent } from './page/page.component';
 import { StoreModule } from '../store/store.module';
-import { ActionComponent } from './action/action.component';
 import { HeaderComponent } from './header/header.component';
+import { MalamakaiModule } from '../malamakai/malamakai.module';
 
 @NgModule({
   declarations: [
     PageComponent,
-    ActionComponent,
     HeaderComponent,
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    StoreModule
+    StoreModule,
+    MalamakaiModule
   ]
 })
 export class HomeModule { }

@@ -14,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   exports: [
-    OceanComponent
+    OceanComponent,
+    ActionComponent
   ]
 })
 export class MalamakaiModule { }

@@ -1,7 +1,8 @@
+// OCEAN
 .ocean {
   background-color: steelblue;
 }
-.text {
+.upgrade {
   text-align: center;
   opacity: 50%;
 }
@@ -27,10 +28,7 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
 }
 
-
-
-
-/**** ANIMALS ****/
+// ANIMALS
 @keyframes scaleUpDown {
   0%,
   100% {transform: scaleY(1) scaleX(1)}
@@ -39,7 +37,6 @@ img {
   75% {transform: scaleY(0.95)}
   80% {transform: scaleX(0.95)}
 }
-
 @keyframes shake {
   0% {transform: rotate(0)}
   15% {transform: rotate(5deg)}
@@ -51,14 +48,12 @@ img {
   92% {transform: rotate(1deg)}
   100% {transform: rotate(0)}
 }
-
 @keyframes particleUp {
   0% {opacity: 0}
   20% {opacity: 1}
   80% {opacity: 1}
   100% {opacity: 0; top: -100%; transform: scale(0.5);}
 }
-
 .water {
   position: relative;
   //top: calc(50% - 50px);
@@ -69,7 +64,6 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
-
 .water-main {
   position: absolute;
   height: 100%;
@@ -78,7 +72,6 @@ img {
   animation-iteration-count: infinite;
   animation-fill-mode: both;
 }
-
 .water-main .main-water {
   position: absolute;
   width: 100%;
@@ -88,7 +81,6 @@ img {
   // border-radius: 0 40% 60% 40%;
   filter: drop-shadow(0 0 10px white);
 }
-
 .water-main .particle-water {
   position: absolute;
   top: 60%;
@@ -115,7 +107,6 @@ img {
   animation-iteration-count: infinite;
   animation-fill-mode: both;
 }
-
 .shake {
   transition: transform 500ms ease;
   &:hover {
