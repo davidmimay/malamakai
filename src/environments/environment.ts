@@ -1,7 +1,7 @@
 export const environment = {
   firebase: {
     apiKey: 'AIzaSyAkdpJ-AHGWQ_JfgUQ4MKvWvvixKPMu4VQ',
-    authDomain: 'malamakai.firebaseapp.com',
+    authDomain: 'malamakai.web.app',
     projectId: 'malamakai',
     storageBucket: 'malamakai.appspot.com',
     messagingSenderId: '198661698484',
