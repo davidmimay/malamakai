@@ -12,7 +12,7 @@ export const environment = {
   google: {
     bloggerId: '6664790489593253867',
     youtubeId: 'UCjoXaFxfiYpVQo8BGj_Glsg',
-    playlistId: 'PLaRo6khyiK-WUXXv_bS-AlDvmankTFGhc',
+    playlistId: 'PLaRo6khyiK-WvMbrOOVK3gjySoY6ynB-L',
     authClientId: '198661698484-ls3mf2csnccflibjb42q9sg6jmolvddm.apps.googleusercontent.com',
     twitterId: '@david_mimay',
   },

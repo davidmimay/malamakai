@@ -6,14 +6,18 @@
 
 <div class="grid" *ngIf="videos.length > 0">
   <mat-card class="grid-anim" *ngFor="let item of videos" [routerLink]="item.resourceId.videoId">
+
     <mat-card-header>
-      <div mat-card-avatar><mat-icon>fitness_center</mat-icon></div>
+      <div mat-card-avatar><mat-icon>waves</mat-icon></div>
       <mat-card-title>{{item.title}}</mat-card-title>
-      <mat-card-subtitle>{{item.description}}</mat-card-subtitle>
+      <mat-card-subtitle>{{item.description | slice:0:50 }}...</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src={{item.thumbnails.high.url}}>
+
+    <img mat-card-image [src]="item.title !== 'Private video' ? item.thumbnails.high.url : ''">
+
     <mat-card-actions>
       <button mat-raised-button>let's go</button>
     </mat-card-actions>
+
   </mat-card>
 </div>
