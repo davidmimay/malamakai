@@ -19,14 +19,14 @@
     <button mat-stroked-button (click)="auth.signOut()">Logout</button>
   </div>
   
-  <mat-tab-group dynamicHeight mat-align-tabs="center" color="accent" [selectedIndex]="1">
+  <mat-tab-group dynamicHeight="true" mat-align-tabs="center" color="accent" [selectedIndex]="0">
     <mat-tab label="✨ Upgrade">
       <app-upgrade></app-upgrade> 
     </mat-tab>
-    <mat-tab label="Bio">
+    <mat-tab label="💎 Bio">
       <app-bio></app-bio>   
     </mat-tab>
-    <mat-tab label="Susbcribe">
+    <mat-tab label="📺 Susbcribe">
       <app-subscribe></app-subscribe>
     </mat-tab>
   </mat-tab-group>

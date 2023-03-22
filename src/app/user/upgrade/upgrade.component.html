@@ -9,7 +9,7 @@
     
     <ng-container *ngFor="let item of products">
 
-      <mat-card *ngIf="item.currency == currency.value">
+      <mat-card class="grid-item-anim" *ngIf="item.currency == currency.value">
         <img mat-card-image src={{item.image}}>
         <mat-card-header>
           <mat-card-title>{{item.name}}</mat-card-title>

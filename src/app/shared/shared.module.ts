@@ -25,13 +25,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatStepperModule } from '@angular/material/stepper';
+
 
 // Maybe unused
 /*
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule } from '@angular/common/http';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 */
@@ -41,6 +44,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { PaymentComponent } from './payment.component';
+import { ThemeComponent } from './theme/theme.component';
 
 const components = [
   DashboardComponent,
@@ -51,6 +55,7 @@ const components = [
 
 const modules = [
   CommonModule,
+  // Angular Material
   MatGridListModule,
   MatCardModule,
   MatMenuModule,
@@ -76,19 +81,22 @@ const modules = [
   MatPaginatorModule,
   MatDialogModule,
   YouTubePlayerModule,
+  MatTooltipModule,
+  MatSlideToggleModule,
+  MatStepperModule
   // Maybe unused
   /*
   MatProgressSpinnerModule,
   MatAutocompleteModule,
   DragDropModule,
   HttpClientModule,
-  MatTooltipModule,
   */
 ];
 
 @NgModule({
   declarations: [
     ...components,
+    ThemeComponent,
   ],
   imports: [
     ...modules,

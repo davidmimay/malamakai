@@ -42,6 +42,20 @@ export class SubscribeComponent {
     });
   }
 
+  // ✅ LOGIN WITH CREDENTIAL
+  async login() {
+    const provider = new GoogleAuthProvider()
+    // Ask user for google data access
+    provider.addScope('https://www.googleapis.com/auth/youtube.readonly')
+    // provider.addScope('https://www.googleapis.com/auth/calendar');
+    return signInWithPopup(this.auth, provider);
+  }
+  
+  // ✅ LOGOUT
+  logout() {
+    this.auth.signOut();
+  }
+
   // ✅ CHECK YOUTUBE STATUS
   async getYoutuber() {
     await gapi.client.load("youtube", "v3");
