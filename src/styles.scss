@@ -5,16 +5,16 @@
 
 // Fonts
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
 
 $fonts: mat.define-typography-config(
-  $headline-1: mat.define-typography-level(112px, 112px, 300, $font-family: 'Playfair Display'),
-  $headline-2: mat.define-typography-level(56px, 56px, 400, $font-family: 'Playfair Display'),
-  $headline-3: mat.define-typography-level(45px, 48px, 400, $font-family: 'Playfair Display'),
-  $headline-4: mat.define-typography-level(34px, 40px, 400, $font-family: 'Playfair Display'),
-  $headline-5: mat.define-typography-level(24px, 32px, 400, $font-family: 'Playfair Display'),
-  $headline-6: mat.define-typography-level(20px, 32px, 500, $font-family: 'Playfair Display'),
+  $headline-1: mat.define-typography-level(65px, 60px, 900, $font-family: 'Playfair Display'),
+  $headline-2: mat.define-typography-level(55px, 50px, 300, $font-family: 'Playfair Display'),
+  $headline-3: mat.define-typography-level(45px, 40px, 900, $font-family: 'Playfair Display'),
+  $headline-4: mat.define-typography-level(35px, 40px, 300, $font-family: 'Playfair Display'),
+  $headline-5: mat.define-typography-level(25px, 30px, 400, $font-family: 'Playfair Display'),
+  $headline-6: mat.define-typography-level(20px, 30px, 500, $font-family: 'Playfair Display'),
   $subtitle-1: mat.define-typography-level(16px, 28px, 400, $font-family: 'DM Sans'),
   $subtitle-2: mat.define-typography-level(15px, 24px, 500, $font-family: 'DM Sans'),
   $body-1: mat.define-typography-level(14px, 24px, 500, $font-family: 'DM Sans'),
@@ -263,6 +263,7 @@ $altTheme: mat.define-dark-theme(
 
 html, body { 
   height: 100%;
+  word-break: break-word;
 }
 body {
   margin: 0;
