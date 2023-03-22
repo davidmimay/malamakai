@@ -31,7 +31,6 @@ export class PlaylistComponent {
     // this.playlistId = this.route.snapshot.paramMap.get('id');
     this.playlistUrl = `https://www.youtube.com/embed/videoseries?list=${this.playlistId}`;
     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.playlistUrl);
-    // this.githubUrl = `https://www.github.com/ethtomars/${this.playlistId}`;
     this.getVideos().subscribe(videos => this.videos = videos);
   }
 
