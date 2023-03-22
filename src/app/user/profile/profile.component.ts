@@ -14,7 +14,6 @@ import { getAuth } from "firebase/auth";
 export class ProfileComponent implements OnInit {
 
   customerId: any;
-  // customer: Observable<any>;
   customer: any;
   cust: any;
   customers = null;
@@ -25,7 +24,6 @@ export class ProfileComponent implements OnInit {
     private seo: SeoService,
     // public data: CustomerDataService
   ) {
-    this.customerId = this.route.snapshot.paramMap.get('id');
   }
 
   // getCustomer(id: string) {
@@ -40,7 +38,7 @@ export class ProfileComponent implements OnInit {
 
   // }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.customerId = this.route.snapshot.paramMap.get('id');
 
     // this.customer = this.firestore
@@ -63,7 +61,7 @@ export class ProfileComponent implements OnInit {
       console.log(source, " data: ", doc.data());
       this.customer = doc.data(); 
     });
-    unsub();
+    // unsub();
   }
 
 }
