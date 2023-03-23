@@ -153,7 +153,7 @@ export class UpgradeComponent {
   async accessCustomerPortal() {
     this.isloading = true // Spinner
     const region = getFunctions(this.app, environment.firebase.locationId);
-    const functionRef = await httpsCallable(region, 'ext-firestore-stripe-subscriptions-createPortalLink'); // 🔥 Change 'subscriptions' to 'payments'
+    const functionRef = await httpsCallable(region, 'ext-firestore-stripe-payments-createPortalLink'); // 🔥 Change 'subscriptions' to 'payments'
     await functionRef({ returnUrl: window.location.origin }) // 'window.location.href' to return to same page, or: `${window.location.origin}/account`})
       .then(({ data }: any) => window.location.assign(data.url))
       .catch((error) => console.trace(error.message));  

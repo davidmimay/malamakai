@@ -67,7 +67,7 @@ export class OceanComponent {
   // ✅ DISPLAY INVOICES
   async getUserInvoices() {
     const customerId: any = this.route.snapshot.paramMap.get('id');
-    const subscriptionRef = query(collection(this.firestore, 'customers', customerId, 'subscriptions'), where('status', 'in', ['trialing', 'active']));
+    const subscriptionRef = query(collection(this.firestore, 'customers', customerId, 'subscriptions')); /*, where('status', 'in', ['trialing', 'active']));*/
     const subscriptionSnap = await getDocs(subscriptionRef);
     const items: any = [];
 
@@ -89,7 +89,7 @@ export class OceanComponent {
             number: invoice['number'],
             url: invoice['hosted_invoice_url'],
             created: invoice['created'] * 1000,
-            // label: invoice.lines.data[0].price.nickname, // price name inside product at Stripe dashboard
+            nickname: invoice.lines.data[0].price.nickname, // price name inside product at Stripe dashboard
             // help: invoice['metadata'].help,
             // clean: (invoiceData.amount_paid / 100 ) * (6), // x6 litres every 1$ spend.
             invoiceId,

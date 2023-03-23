@@ -10,7 +10,7 @@
         <div class="water">
           <div class="water-main">
             <div class="main-water">
-              <!-- <h1 class="shake">{{item.label}}</h1> -->
+              <h1 class="shake">{{item.nickname}}</h1>
             </div>
             <div class="particle-water"></div>
             <div class="particle-water2"></div>
@@ -20,13 +20,13 @@
       </button>
       <mat-menu #menu="matMenu">
         <mat-list>
-          <img src="assets/beach.jpg">
+          <!-- <img src="assets/beach.jpg"> -->
           <mat-list-item>
-            <p mat-line>Clean: #{{item.number}}</p>
+            <p mat-line>ID: {{item.number}}</p>
             <!-- <p mat-line>Quantity: {{item.help}}kg of CO2 removed</p> -->
             <p mat-line>When: {{item.created | date}}</p>
           </mat-list-item>
-          <a mat-menu-item href="https://goo.gl/maps/eHW7QLyPC2JCZzJP7" target="_blank">Where: 📍 Portman (see map)</a>
+          <!-- <a mat-menu-item href="https://goo.gl/maps/eHW7QLyPC2JCZzJP7" target="_blank">Where: 📍 Portman (see map)</a> -->
         </mat-list>
       </mat-menu>
     </div>  
