@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { OceanComponent } from './ocean/ocean.component';
 import { ActionComponent } from './action/action.component';
 import { SharedModule } from '../shared/shared.module';
+import { HelpersComponent } from './helpers/helpers.component';
 
 @NgModule({
   declarations: [
     OceanComponent,
-    ActionComponent
+    ActionComponent,
+    HelpersComponent
   ],
   imports: [
     CommonModule,
