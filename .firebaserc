@@ -1,6 +1,6 @@
 {
   "targets": {
-    "webapp": {
+    "malamakai": {
       "hosting": {
         "webapp": [
           "malamakai"
