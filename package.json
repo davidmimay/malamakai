@@ -10,7 +10,8 @@
     "dev:ssr": "ng run webapp:serve-ssr",
     "serve:ssr": "node dist/webapp/server/main.js",
     "build:ssr": "ng build && ng run webapp:server",
-    "prerender": "ng run webapp:prerender"
+    "prerender": "ng run webapp:prerender",
+    "deploy": "ng deploy"
   },
   "private": true,
   "dependencies": {
