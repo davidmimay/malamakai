@@ -1,4 +1,5 @@
 # Webapp
+![](https://repository-images.githubusercontent.com/587794134/11ecc8f6-07d5-4a75-afc1-e7194f45644a)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
 
