@@ -11,9 +11,12 @@ export class ThemeComponent {
 
   constructor() {
     // Theme toggle
-    const theme = localStorage.getItem('theme');
-    if (theme) {
-      document.body.classList.add(theme);
+    if (typeof window !== 'undefined') {
+      // Perform localStorage action
+      const theme = localStorage.getItem('theme');
+      if (theme) {
+        document.body.classList.add(theme);
+      }
     }
   }
 
